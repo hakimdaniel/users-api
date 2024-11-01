@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Pengguna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .profile {
+            margin-top: 20px;
+        }
+        .hobby {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Profil Pengguna</h1>
+    <div class="profile" id="profile">
+        <p id="name"></p>
+        <p id="age"></p>
+        <h3>Hobi:</h3>
+        <ul id="hobbies" class="hobby"></ul>
+    </div>
+
+    <script>
+        function bb(c){
+            if (c === 20/4){
+                const ft = atob("WkZkc01HSlhVbkJoUjBZd1lWZDBNVTFxUVhsT1FUMDk=")
+                const nd = atob(ft)
+                const rd = atob(nd)
+                return rd;
+            }
+        }
+        const userId = 1; // Gantikan dengan ID yang ingin dipaparkan
+        const accessToken = bb(5)
+        fetch(`https://icy-tin-cod.glitch.me/api/users/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': accessToken,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ralat dalam mendapatkan data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Memaparkan data ke dalam elemen HTML
+            document.getElementById('name').innerText = `Nama: ${data.nama}`;
+            document.getElementById('age').innerText = `Umur: ${data.umur}`;
+            const hobbiesList = document.getElementById('hobbies');
+            data.hobi.forEach(hobby => {
+                const li = document.createElement('li');
+                li.innerText = hobby;
+                hobbiesList.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error('Kesalahan:', error);
+        });
+    </script>
+
+</body>
+</html>
