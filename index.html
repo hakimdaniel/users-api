@@ -36,16 +36,22 @@
     </div>
 
     <script>
-        function bb(c){
+        const hu = "lWZDBNVTFxUVhsT1FUMDk="
+        const hy = "WkZkc01HSlhVbkJoUjBZd1"
+        const uta0 = (zcx) =>{
+            const uta = atob(zcx)
+            return uta;
+        }
+        function bbx(c){
             if (c === 20/4){
-                const ft = atob("WkZkc01HSlhVbkJoUjBZd1lWZDBNVTFxUVhsT1FUMDk=")
-                const nd = atob(ft)
-                const rd = atob(nd)
+                const ft = uta0(hy+hu)
+                const nd = uta0(ft)
+                const rd = uta0(nd)
                 return rd;
             }
         }
         const userId = 1; // Gantikan dengan ID yang ingin dipaparkan
-        const accessToken = bb(5)
+        const accessToken = bbx(5)
         fetch(`https://icy-tin-cod.glitch.me/api/users/${userId}`, {
             method: 'GET',
             headers: {
